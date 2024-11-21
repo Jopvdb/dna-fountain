@@ -2,7 +2,7 @@
 Copyright (C) 2016 Yaniv Erlich
 License: GPLv3-or-later. See COPYING file for details.
 """
-from string import maketrans   # Required to call maketrans function.
+str.maketrans
 import struct
 import random
 import os

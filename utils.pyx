@@ -2,7 +2,7 @@
 Copyright (C) 2016 Yaniv Erlich
 License: GPLv3-or-later. See COPYING file for details.
 """
-str.maketrans
+from str import maketrans
 import struct
 import random
 import os
@@ -12,8 +12,8 @@ import argparse
 intab = "0123"
 outtab = "ACGT"
 
-trantab = str.maketrans(intab, outtab)
-revtab = str.maketrans(outtab, intab)
+trantab = maketrans(intab, outtab)
+revtab = maketrans(outtab, intab)
 
 
 def charN(str, N):

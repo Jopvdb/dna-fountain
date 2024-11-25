@@ -1,3 +1,4 @@
+# cython: language_level=3
 from utils import *
 from droplet import Droplet
 from reedsolo import RSCodec

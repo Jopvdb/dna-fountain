@@ -13,7 +13,6 @@ import logging
 import Colorer
 import os
 import sys
-from sets import Set
 from lfsr import lfsr
 import json
 from tqdm import tqdm

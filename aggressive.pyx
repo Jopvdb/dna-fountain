@@ -10,11 +10,10 @@ from robust_solition import PRNG
 import numpy as np
 import operator
 import sys
-from sets import Set
 from collections import defaultdict
-import cPickle as pickle
+import pickle
 from random import shuffle
-import md5
+import hashlib
 import logging
 import Colorer
 
@@ -28,7 +27,7 @@ class Aggressive:
         self.on = False
         self.min_coverage = min_coverage
         self.glass_file = None
-        self.md5_dict = defaultdict(list)
+        self.hashlib_dict = defaultdict(list)
 
     def turn_on(self, coverage, seen_seed):
         self.seen_seed = seen_seed
@@ -75,12 +74,12 @@ class Aggressive:
 
         best = 0
         best_file = None
-        for md5_str in self.md5_dict.keys():
-            value = len(self.md5_dict[md5_str])
-            logging.debug("For MD5 %s, we have %d successes. For example: %s", md5_str, value, self.md5_dict[md5_str][0])
+        for hashlib_str in self.hashlib_dict.keys():
+            value = len(self.hashlib_dict[hashlib_str])
+            logging.debug("For MD5 %s, we have %d successes. For example: %s", hashlib_str, value, self.hashlib_dict[hashlib_str][0])
             if best < value:
                 best = value
-                best_file = self.md5_dict[md5_str][0]
+                best_file = self.hashlib_dict[hashlib_str][0]
 
         logging.debug("Best is %s with %d successes", best_file, best)
         return best_file, best
@@ -93,9 +92,9 @@ class Aggressive:
         logging.debug("Results of decoding are at %s", outname)
         o.close()
         
-        md5_str = md5.new(outstring).hexdigest()
-        logging.debug("Results of decoding are at %s with MD5: %s", outname, md5_str)
-        self.md5_dict[md5_str].append(outname)
+        hashlib_str = hashlib.new(outstring).hexdigest()
+        logging.debug("Results of decoding are at %s with MD5: %s", outname, hashlib_str)
+        self.hashlib_dict[hashlib_str].append(outname)
         return 1
 
     def get_all_remaining_lines(self):

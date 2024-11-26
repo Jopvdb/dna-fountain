@@ -7,9 +7,8 @@ from other_screens import dexpandable_alphabet
 import numpy as np
 import operator
 import sys
-from sets import Set
 from collections import defaultdict
-import cPickle as pickle
+import pickle
 
 class Glass:
     def __init__(self, num_chunks, out, header_size = 4, 
@@ -18,7 +17,7 @@ class Glass:
                 max_hamming = 100, decode = True, chunk_size = 32, exDNA = False, np = False, truth = None):
         
         self.entries = []
-        self.droplets = Set()
+        self.droplets = set()
         self.num_chunks = num_chunks
         self.chunks = [None] * num_chunks
         self.header_size = header_size
@@ -27,7 +26,7 @@ class Glass:
         self.exDNA = exDNA
         self.np = np
         self.chunk_to_droplets = defaultdict(set)
-        self.done_segments = Set()
+        self.done_segments = set()
         self.truth = truth
         self.out = out
 
@@ -44,7 +43,7 @@ class Glass:
         self.rs = rs
         self.RSCodec = None
         self.correct = flag_correct
-        self.seen_seeds = Set()
+        self.seen_seeds = set()
         
 
 

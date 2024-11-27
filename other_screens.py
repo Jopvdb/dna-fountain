@@ -1,4 +1,4 @@
-from Bio.Seq import Seq
+#from Bio.Seq import Seq
 import struct
 import numpy as np
 
